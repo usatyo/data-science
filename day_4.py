@@ -21,10 +21,15 @@ def cross(n, idx):
     test_y = data[1, groups == idx]
 
     m = 3
-    w = calc_w(m,train_x, train_y)
-    print(E_rms(calc_y(m,w,test_x), test_y))
-    return E_rms(calc_y(m,w,test_x), test_y)
+    w = calc_w(m, train_x, train_y)
+    print(E_rms(calc_y(m, w, test_x), test_y))
+    return E_rms(calc_y(m, w, test_x), test_y)
 
 
-cross(20,4)
+def mean_cross(n):
+    sum_cross = 0
+    for i in range(5):
+        sum_cross += cross(n, i+1)
+    return sum_cross / 5
 
+print(mean_cross(20))
