@@ -1,4 +1,3 @@
-from cv2 import moveWindow
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -26,7 +25,7 @@ def calc_w(m, x, t):
     return w
 
 
-def calc_y(m,w,x):
+def calc_y(m, w, x):
     plot_y = np.zeros(len(x))
     for i in range(m + 1):
         plot_y += w[i] * x**i
@@ -43,15 +42,13 @@ def move_w(n):
 
     plot_x = np.arange(0.0, 1.0, 0.01)
 
-    for m in range(6, 9):
+    for m in range(8, 9):
         w = calc_w(m, x, y)
-        plot_y = calc_y(m,w,plot_x)
+        plot_y = calc_y(m, w, plot_x)
         ax.plot(plot_x, plot_y)
 
     plt.axis([0, 1, -1, 1])
     plt.show()
 
 
-
-
-# move_w(10)
+move_w(10)
