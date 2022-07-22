@@ -32,6 +32,15 @@ def calc_y(m, w, x):
     return plot_y
 
 
+def plot_all(m, w):
+    fig, ax = plt.subplots()
+    x = np.arange(0.0, 1.0, 0.01)
+    y = calc_y(m, w, x)
+    ax.plot(x, y)
+    plt.axis([0, 1, -1, 1])
+    plt.show()
+
+
 def move_w(n):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     x = data[0]

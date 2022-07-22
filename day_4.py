@@ -1,5 +1,5 @@
 import numpy as np
-from day_2 import calc_w, calc_y
+from day_2 import calc_w, calc_y, plot_all
 from day_3 import E_rms
 
 
@@ -25,7 +25,7 @@ def cross(n, m, idx):
     return E_rms(calc_y(m, w, test_x), test_y)
 
 
-def mean_cross(n):
+def best_mean_cross(n):
     min_m = 1
     min_mean = 10**10
     for m in range(1, 10):
@@ -39,4 +39,13 @@ def mean_cross(n):
     return min_m, min_mean
 
 
-print(mean_cross(20))
+def plot_best_m(n):
+    m, min_mean = best_mean_cross(n)
+    data = np.loadtxt("data/sample_" + str(n) + ".txt")
+    train_x = data[0]
+    train_y = data[1]
+    w = calc_w(m, train_x, train_y)
+    plot_all(m, w)
+
+
+plot_best_m(20)
