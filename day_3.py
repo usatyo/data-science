@@ -24,4 +24,4 @@ def check_score(n):
         print()
 
 
-check_score(100)
+# check_score(100)
