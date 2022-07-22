@@ -27,7 +27,7 @@ def sin_noise(x):
     noise = np.array([np.random.normal(0, 0.1) for i in range(len(x))])
     y = np.sin(2 * np.pi * x) + noise
     # plot_data(x, y, "noised sin")
-    ret = np.array([x,y]).T
+    ret = np.array([x,y])
     return ret
 
 

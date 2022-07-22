@@ -1,3 +1,5 @@
+from cv2 import moveWindow
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -23,4 +25,26 @@ def calc_w(m, x, t):
     w = np.dot(np.linalg.inv(A), T)
     return w
 
-print(calc_w(2, np.array([-3,0,1]), np.array([9,0,1])))
+
+def move_w(n):
+    data = np.loadtxt("data/sample_" + str(n) + ".txt")
+    x = data[0]
+    y = data[1]
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y, "o")
+
+    plot_x = np.arange(0.0, 1.0, 0.01)
+
+    for m in range(6, 9):
+        w = calc_w(m, x, y)
+        plot_y = np.zeros(len(plot_x))
+        for i in range(m + 1):
+            plot_y += w[i] * plot_x**i
+        ax.plot(plot_x, plot_y)
+
+    plt.axis([0, 1, -1, 1])
+    plt.show()
+
+
+move_w(10)
