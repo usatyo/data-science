@@ -1,4 +1,3 @@
-from random import randrange
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -28,7 +27,8 @@ def sin_noise(x):
     noise = np.array([np.random.normal(0, 0.1) for i in range(len(x))])
     y = np.sin(2 * np.pi * x) + noise
     # plot_data(x, y, "noised sin")
-    return y
+    ret = np.array([x,y]).T
+    return ret
 
 
 def save_data():
@@ -37,4 +37,4 @@ def save_data():
         np.savetxt("data/sample_" + str(n) + ".txt", data)
 
 
-save_data()
+# save_data()
