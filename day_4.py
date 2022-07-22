@@ -12,7 +12,7 @@ def rand_int(n):
     return ret
 
 
-def cross(n, idx):
+def cross(n, m, idx):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     groups = np.loadtxt("data/randint_" + str(n) + ".txt")
     train_x = data[0, groups != idx]
@@ -20,16 +20,18 @@ def cross(n, idx):
     test_x = data[0, groups == idx]
     test_y = data[1, groups == idx]
 
-    m = 3
     w = calc_w(m, train_x, train_y)
-    print(E_rms(calc_y(m, w, test_x), test_y))
+    # print(E_rms(calc_y(m, w, test_x), test_y))
     return E_rms(calc_y(m, w, test_x), test_y)
 
 
 def mean_cross(n):
     sum_cross = 0
-    for i in range(5):
-        sum_cross += cross(n, i+1)
-    return sum_cross / 5
+    for m in range(1,10):
+        for i in range(5):
+            sum_cross += cross(n, m, i + 1)
+        print(sum_cross / 5)
+    return 0
+
 
 print(mean_cross(20))
