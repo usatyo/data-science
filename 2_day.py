@@ -26,6 +26,13 @@ def calc_w(m, x, t):
     return w
 
 
+def calc_y(m,w,x):
+    plot_y = np.zeros(len(x))
+    for i in range(m + 1):
+        plot_y += w[i] * x**i
+    return plot_y
+
+
 def move_w(n):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     x = data[0]
@@ -38,13 +45,13 @@ def move_w(n):
 
     for m in range(6, 9):
         w = calc_w(m, x, y)
-        plot_y = np.zeros(len(plot_x))
-        for i in range(m + 1):
-            plot_y += w[i] * plot_x**i
+        plot_y = calc_y(m,w,plot_x)
         ax.plot(plot_x, plot_y)
 
     plt.axis([0, 1, -1, 1])
     plt.show()
 
 
-move_w(10)
+
+
+# move_w(10)
