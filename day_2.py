@@ -51,4 +51,4 @@ def move_w(n):
     plt.show()
 
 
-move_w(10)
+# move_w(10)

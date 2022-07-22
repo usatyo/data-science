@@ -10,8 +10,17 @@ def E_rms(est, ans):
     return ret
 
 
-data = np.loadtxt("data/sample_" + str(10) + ".txt")
-x = data[0]
-y = data[1]
-w = calc_w(8, x, y)
-print(E_rms(calc_y(8,w,x), y))
+def check_train(n):
+    data = np.loadtxt("data/sample_" + str(n) + ".txt")
+    train_x = data[0, : n // 2]
+    train_y = data[1, : n // 2]
+    test_x = data[0, n // 2 :]
+    test_y = data[1, n // 2 :]
+
+    for m in range(1, 10):
+        w = calc_w(m, train_x, train_y)
+        print(E_rms(calc_y(m, w, train_x), train_y))
+        print(E_rms(calc_y(m, w, test_x), test_y))
+
+
+check_train(20)
