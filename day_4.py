@@ -26,12 +26,17 @@ def cross(n, m, idx):
 
 
 def mean_cross(n):
-    sum_cross = 0
-    for m in range(1,10):
+    min_m = 1
+    min_mean = 10**10
+    for m in range(1, 10):
+        sum_cross = 0
         for i in range(5):
             sum_cross += cross(n, m, i + 1)
+        if sum_cross / 5 < min_mean:
+            min_mean = sum_cross / 5
+            min_m = m
         print(sum_cross / 5)
-    return 0
+    return min_m, min_mean
 
 
 print(mean_cross(20))
