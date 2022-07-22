@@ -45,7 +45,7 @@ def plot_best_m(n):
     train_x = data[0]
     train_y = data[1]
     w = calc_w(m, train_x, train_y)
-    plot_all(m, w)
+    plot_all(m, w, n)
 
 
 plot_best_m(20)
