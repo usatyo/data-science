@@ -10,7 +10,7 @@ def E_rms(est, ans):
     return ret
 
 
-def check_train(n):
+def check_score(n):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     train_x = data[0, : n // 2]
     train_y = data[1, : n // 2]
@@ -21,6 +21,7 @@ def check_train(n):
         w = calc_w(m, train_x, train_y)
         print(E_rms(calc_y(m, w, train_x), train_y))
         print(E_rms(calc_y(m, w, test_x), test_y))
+        print()
 
 
-check_train(20)
+check_score(100)
