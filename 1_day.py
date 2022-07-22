@@ -27,7 +27,14 @@ def rand_array(n):
 def sin_noise(x):
     noise = np.array([np.random.normal(0, 0.1) for i in range(len(x))])
     y = np.sin(2 * np.pi * x) + noise
-    plot_data(x, y, "noised sin")
+    # plot_data(x, y, "noised sin")
+    return y
 
 
-sin_noise(rand_array(100))
+def save_data():
+    for n in [10, 20, 50, 100]:
+        data = sin_noise(rand_array(n))
+        np.savetxt("data/sample_" + str(n) + ".txt", data)
+
+
+save_data()
