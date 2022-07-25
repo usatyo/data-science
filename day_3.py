@@ -1,5 +1,5 @@
 import numpy as np
-from day_2 import calc_w, calc_y
+from day_2 import calc_w, calc_y, plot_all
 
 
 def E_rms(est, ans):
@@ -22,6 +22,7 @@ def check_score(n):
         print(E_rms(calc_y(m, w, train_x), train_y))
         print(E_rms(calc_y(m, w, test_x), test_y))
         print()
+        plot_all(m,w,n)
 
 
-# check_score(100)
+check_score(100)

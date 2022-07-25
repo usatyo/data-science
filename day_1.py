@@ -19,7 +19,7 @@ def plot_data(x, y, title):
 
 
 def rand_array(n):
-    ret = np.array(sorted([np.random.rand() for i in range(n)]))
+    ret = np.array([np.random.rand() for i in range(n)])
     return ret
 
 
