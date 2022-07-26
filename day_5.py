@@ -1,6 +1,6 @@
 import numpy as np
 from day_1 import plot_data
-from day_2 import calc_A, calc_T, calc_y
+from day_2 import calc_A, calc_T, calc_y, plot_all
 from day_3 import E_rms
 
 
@@ -22,7 +22,7 @@ def cross_reg(n, m, idx, l):
     w = calc_reg_w(m, train_x, train_y, l)
     E_train = E_rms(calc_y(m, w, train_x), train_y)
     E_test = E_rms(calc_y(m, w, test_x), test_y)
-    return E_train, E_test, np.sum(w**2)
+    return E_train, E_test, np.sum(w**2)**0.5
 
 
 def best_lambda_cross(n):
@@ -50,4 +50,13 @@ def best_lambda_cross(n):
     return 0
 
 
-best_lambda_cross(20)
+def plot_best(m, l, n):
+    data = np.loadtxt("data/sample_" + str(n) + ".txt")
+    w = calc_reg_w(m, data[0], data[1], l)
+    print(w)
+    plot_all(m, w, n)
+    return 0
+
+
+# best_lambda_cross(10)
+plot_best(9, 10 ** (-8), 20)
