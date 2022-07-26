@@ -11,7 +11,25 @@ def calc_reg_w(m, x, t, l):
     return w
 
 
-def cross_reg(n, m, idx, l):
+def vec_norm(w):
+    return np.sum(w**2) ** 0.5
+
+
+def cross_reg(n, m, l):
+    data = np.loadtxt("data/sample_" + str(n) + ".txt")
+    train_x = data[0, : n // 2]
+    train_y = data[1, : n // 2]
+    test_x = data[0, n // 2 :]
+    test_y = data[1, n // 2 :]
+
+    w = calc_reg_w(m, train_x, train_y, l)
+    E_train = E_rms(calc_y(m, w, train_x), train_y)
+    E_test = E_rms(calc_y(m, w, test_x), test_y)
+    nor = vec_norm(w)
+    return E_train, E_test, nor
+
+
+def cross_reg_five(n, m, idx, l):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     groups = np.loadtxt("data/randint_" + str(n) + ".txt")
     train_x = data[0, groups != idx]
@@ -22,7 +40,8 @@ def cross_reg(n, m, idx, l):
     w = calc_reg_w(m, train_x, train_y, l)
     E_train = E_rms(calc_y(m, w, train_x), train_y)
     E_test = E_rms(calc_y(m, w, test_x), test_y)
-    return E_train, E_test, np.sum(w**2)**0.5
+    nor = vec_norm(w)
+    return E_train, E_test, nor
 
 
 def best_lambda_cross(n):
@@ -37,7 +56,8 @@ def best_lambda_cross(n):
         sum_test = 0
         sum_size = 0
         for i in range(5):
-            E_train, E_test, size = cross_reg(n, m, i + 1, l)
+            E_train, E_test, size = cross_reg(n, m, l)
+            # E_train, E_test, size = cross_reg_five(n, m, i + 1, l)
             sum_train += E_train
             sum_test += E_test
             sum_size += size
@@ -47,7 +67,7 @@ def best_lambda_cross(n):
     plot_data(l_exp_list, train_list, "train")
     plot_data(l_exp_list, test_list, "test")
     plot_data(l_exp_list, size_list, "size")
-    return 0
+    return l_list[np.argmin(test_list)]
 
 
 def plot_best(m, l, n):
@@ -58,5 +78,7 @@ def plot_best(m, l, n):
     return 0
 
 
-# best_lambda_cross(10)
-plot_best(9, 10 ** (-8), 20)
+print('best lambda:', '{:.2e}'.format(best_lambda_cross(20)))
+# plot_best(9, 10 ** (-8), 20)
+
+
