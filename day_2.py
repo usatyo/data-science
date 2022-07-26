@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+# 線形方程式における行列 A を計算
 def calc_A(m, x):
     ret = np.zeros((m + 1, m + 1))
     for i in range(len(x)):
@@ -10,6 +11,7 @@ def calc_A(m, x):
     return ret
 
 
+# 線型方程式における行列 T を計算
 def calc_T(m, x, t):
     ret = np.zeros((m + 1, 1))
     for i in range(len(x)):
@@ -18,6 +20,7 @@ def calc_T(m, x, t):
     return ret
 
 
+# 与えられたデータから A、T を作成し、w を算出
 def calc_w(m, x, t):
     A = calc_A(m, x)
     T = calc_T(m, x, t)
@@ -25,6 +28,8 @@ def calc_w(m, x, t):
     return w
 
 
+# 重み w の m 次多項式関数に点列 x を代入した際の
+# 結果出力される点列 y を計算
 def calc_y(m, w, x):
     plot_y = np.zeros(len(x))
     for i in range(m + 1):
@@ -32,6 +37,8 @@ def calc_y(m, w, x):
     return plot_y
 
 
+# サイズ n の訓練データをプロットした上で、
+# 重み w の m 次多項式関数のグラフを描画する
 def plot_all(m, w, n):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     fig, ax = plt.subplots()
@@ -45,7 +52,9 @@ def plot_all(m, w, n):
     plt.show()
 
 
-def move_w(n):
+# m を変化させたときの多項式関数のグラフを重ねて描画する
+# さらに訓練データも同じ場所にプロットする
+def move_m(n):
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     x = data[0]
     y = data[1]
@@ -55,7 +64,7 @@ def move_w(n):
 
     plot_x = np.arange(0.0, 1.0, 0.01)
 
-    for m in range(8, 9):
+    for m in range(1, 9):
         w = calc_w(m, x, y)
         plot_y = calc_y(m, w, plot_x)
         ax.plot(plot_x, plot_y)
@@ -64,4 +73,5 @@ def move_w(n):
     plt.show()
 
 
-# move_w(10)
+# 7.7 ~ 7.9
+# move_m(10)
