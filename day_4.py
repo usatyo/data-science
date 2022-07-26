@@ -48,4 +48,4 @@ def plot_best_m(n):
     plot_all(m, w, n)
 
 
-plot_best_m(20)
+# plot_best_m(20)

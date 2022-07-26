@@ -37,4 +37,4 @@ def save_data():
         np.savetxt("data/sample_" + str(n) + ".txt", data)
 
 
-save_data()
+# save_data()

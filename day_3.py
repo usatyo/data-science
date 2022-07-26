@@ -22,7 +22,7 @@ def check_score(n):
         print(E_rms(calc_y(m, w, train_x), train_y))
         print(E_rms(calc_y(m, w, test_x), test_y))
         print()
-        plot_all(m,w,n)
+        plot_all(m, w, n)
 
 
-check_score(100)
+# check_score(100)
