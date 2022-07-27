@@ -68,6 +68,7 @@ def best_lambda_cross(n, cut):
         sum_test = 0
         sum_size = 0
         for i in range(5):
+            # 分割数によって処理を分岐
             if cut == 2:
                 E_train, E_test, size = cross_reg(n, m, l)
             else:

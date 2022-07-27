@@ -23,6 +23,9 @@ def calc_T(m, x, t):
 # 与えられたデータから A、T を作成し、w を算出
 def calc_w(m, x, t):
     A = calc_A(m, x)
+    # 逆行列が存在しない場合の処理
+    if np.linalg.det(A) == 0:
+        print('error: make another random file')
     T = calc_T(m, x, t)
     w = np.dot(np.linalg.inv(A), T)
     return w

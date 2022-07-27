@@ -6,7 +6,7 @@ import numpy as np
 def sample():
     x = np.arange(0.0, 1.0, 0.01)
     y = np.sin(2 * np.pi * x)
-    plot_data(x, y, "sample")
+    plot_data(x, y, "")
 
 
 # x と y に格納されたデータをプロット
@@ -14,7 +14,7 @@ def plot_data(x, y, title):
     fig, ax = plt.subplots()
     ax.plot(x, y, "o")
 
-    ax.set(title=title)
+    ax.set(title="")
     ax.grid()
 
     plt.show()
@@ -31,7 +31,7 @@ def rand_array(n):
 def sin_noise(x):
     noise = np.array([np.random.normal(0, 0.1) for i in range(len(x))])
     y = np.sin(2 * np.pi * x) + noise
-    # plot_data(x, y, "noised sin")
+    plot_data(x, y, "noised sin")
     ret = np.array([x, y])
     return ret
 
