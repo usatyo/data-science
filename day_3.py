@@ -39,8 +39,8 @@ def check_score(n, m_list):
 # check_score(20, [3])
 
 # 7.15
-check_score(20, range(1, 10))
+# check_score(20, range(1, 10))
 
 # 7.16
-# check_score(50, range(1, 10))
-# check_score(100, range(1, 10))
+check_score(50, range(1, 10))
+check_score(100, range(1, 10))

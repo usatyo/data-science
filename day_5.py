@@ -9,7 +9,7 @@ from day_3 import E_rms
 def calc_reg_w(m, x, t, l):
     A = calc_A(m, x) + l * np.eye(m + 1)
     T = calc_T(m, x, t)
-    w = np.dot(np.linalg.inv(A), T)
+    w = np.linalg.solve(A, T)
     return w
 
 

@@ -18,6 +18,7 @@ def plot_data(x, y, title):
     ax.set(title="")
     ax.grid()
 
+    # plt.axis([0, 10, -0.1, 1])
     plt.show()
 
 
@@ -46,7 +47,7 @@ def save_data(n_list):
 
 
 # 7.2
-sample()
+# sample()
 
 # 7.3
 # print(rand_array(10))
