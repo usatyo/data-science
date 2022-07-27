@@ -67,7 +67,7 @@ def move_m(n):
 
     plot_x = np.arange(0.0, 1.0, 0.01)
 
-    for m in range(1, 9):
+    for m in range(7, 10):
         w = calc_w(m, x, y)
         plot_y = calc_y(m, w, plot_x)
         ax.plot(plot_x, plot_y)

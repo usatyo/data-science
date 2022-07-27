@@ -1,4 +1,5 @@
 import numpy as np
+from day_1 import plot_data
 from day_2 import calc_w, calc_y, plot_all
 
 
@@ -19,20 +20,27 @@ def check_score(n, m_list):
     train_y = data[1, : n // 2]
     test_x = data[0, n // 2 :]
     test_y = data[1, n // 2 :]
+    train_dif = []
+    test_dif = []
 
     for m in m_list:
         w = calc_w(m, train_x, train_y)
-        print(E_rms(calc_y(m, w, train_x), train_y))
-        print(E_rms(calc_y(m, w, test_x), test_y))
+        train_dif.append(E_rms(calc_y(m, w, train_x), train_y))
+        test_dif.append(E_rms(calc_y(m, w, test_x), test_y))
+        print(train_dif[-1])
+        print(test_dif[-1])
         print()
         plot_all(m, w, n)
+
+    plot_data(m_list, train_dif, "")
+    plot_data(m_list, test_dif, "")
 
 
 # 7.12 ~ 7.14
 # check_score(20, [3])
 
 # 7.15
-# check_score(20, range(1, 10))
+check_score(20, range(1, 10))
 
 # 7.16
 # check_score(50, range(1, 10))
