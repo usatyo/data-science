@@ -46,7 +46,7 @@ def plot_mean_cross(n):
     m_list = range(1, 10)
     for m in m_list:
         mean_cross.append(five_cross(n, m))
-    plot_data(m_list, mean_cross, "mean-cross")
+    plot_data(m_list, [mean_cross], "mean-cross")
 
 
 # m を1から9まで変化させて交差検定を行い、

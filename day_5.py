@@ -79,9 +79,8 @@ def best_lambda_cross(n, cut):
         train_list.append(sum_train / 5)
         test_list.append(sum_test / 5)
         size_list.append(sum_size / 5)
-    plot_data(l_exp_list, train_list, "train")
-    plot_data(l_exp_list, test_list, "test")
-    plot_data(l_exp_list, size_list, "size")
+    plot_data(l_exp_list, [train_list, test_list], "train-test")
+    plot_data(l_exp_list, [size_list], "size")
     return l_list[np.argmin(test_list)]
 
 

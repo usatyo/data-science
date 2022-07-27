@@ -32,8 +32,7 @@ def check_score(n, m_list):
         print()
         plot_all(m, w, n)
 
-    plot_data(m_list, train_dif, "")
-    plot_data(m_list, test_dif, "")
+    plot_data(m_list, [train_dif, test_dif], "")
 
 
 # 7.12 ~ 7.14
