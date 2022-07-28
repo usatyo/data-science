@@ -8,6 +8,9 @@ from day_3 import E_rms
 # A が A + λI に置き換わった場合の w を計算
 def calc_reg_w(m, x, t, l):
     A = calc_A(m, x) + l * np.eye(m + 1)
+    # 逆行列が存在しない場合の処理
+    if np.linalg.det(A) == 0:
+        print("error: make another random file")
     T = calc_T(m, x, t)
     w = np.linalg.solve(A, T)
     return w
