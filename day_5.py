@@ -90,7 +90,7 @@ def best_lambda_cross(n, cut):
 # 交差検定でえられた最良の λ について訓練データを全て用いて
 # w を再計算し、多項式関数のグラフと訓練データをプロット
 def plot_best(m, n):
-    l = best_lambda_cross(n)
+    l = best_lambda_cross(n, 5)
     data = np.loadtxt("data/sample_" + str(n) + ".txt")
     w = calc_reg_w(m, data[0], data[1], l)
     print(w)
@@ -105,7 +105,7 @@ def plot_best(m, n):
 # best_lambda_cross(20, 5)
 
 # 7.27
-# print("best lambda:", "{:.2e}".format(best_lambda_cross(20)))
+print("best lambda:", "{:.2e}".format(best_lambda_cross(20, 5)))
 
 # 7.28
 # plot_best(9, 20)
